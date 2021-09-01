@@ -1,0 +1,36 @@
+ALGORITHM native-solution1
+VAR
+    set1,set2 : ARRAY_OF INTEGER [20];
+    i,j : INTEGER;
+    sum:INTEGER:=0;
+    isFound:BOOLEAN
+BEGIN
+   //reading elements  in two sets
+   //compare each element of set one with the second set  and if element is not present  then add it to the sum
+   FOR i FROM 0 TO set1.length STEP step  DO
+   isFound:=FALSE
+   FOR j FROM 0 TO set2.length STEP step  DO
+    IF (set1[i]=set2[i]) THEN
+        isFound:=TRUE;
+        break;
+    END_IF
+   END_FOR
+       IF (isFound=FALSE) THEN
+           sum:=sum+set1[i]
+       END_IF
+   END_FOR
+
+   FOR j FROM 0 TO set2.length STEP step  DO
+   isFound:=FALSE
+   FOR i FROM 0 TO set1.length STEP step  DO
+    IF (set1[i]=set2[i]) THEN
+        isFound:=TRUE;
+        break;
+    END_IF
+   END_FOR
+       IF (isFound=FALSE) THEN
+           sum:=sum+set2[i]
+       END_IF
+   END_FOR
+    Write('the sum of distincts elements is',sum)
+END
